@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+apply plugin: 'java'
+
+group = 'net.champioxdev'
+version = '1.1-alpha'
+description = 'BackUp Maker delivers small encrypted backups for all of your data'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.2')
+    implementation('org.kamranzafar:jtar:2.3')
+    implementation('org.tukaani:xz:1.10')
+}
+
+task "runProject"(type: JavaExec) {
+    group = "backup"
+    description = "Run the BachUp Maker"
+    mainClass = "net.champioxdev.backupmaker.Main"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+test {
+    useJUnitPlatform()
+}
